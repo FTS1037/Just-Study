@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://f4hucmh86ges"]
+
+[ext_resource type="Script" uid="uid://dxlyhc05a00df" path="res://接金币/团子.cs" id="1_jtsxe"]
+[ext_resource type="Texture2D" uid="uid://bvce0upsnosj7" path="res://Plain/Dango_plain.png" id="1_x016h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yasse"]
+size = Vector2(72, 50)
+
+[node name="团子" type="Area2D"]
+script = ExtResource("1_jtsxe")
+_speed = 200.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+light_mask = 0
+texture_filter = 1
+position = Vector2(0, -1)
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("1_x016h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_yasse")

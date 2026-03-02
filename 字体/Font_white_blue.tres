@@ -1,0 +1,11 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dh8k4omlrccuv"]
+
+[ext_resource type="FontFile" uid="uid://cuh4r1inoungp" path="res://字体/像素风.ttf" id="1_b1lm1"]
+
+[resource]
+font = ExtResource("1_b1lm1")
+font_size = 72
+font_color = Color(0.91528577, 1, 0.9969166, 1)
+shadow_size = 10
+shadow_color = Color(0.025840001, 0.25766784, 1, 0.71800005)
+shadow_offset = Vector2(2, 2)

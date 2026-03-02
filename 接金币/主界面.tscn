@@ -1,0 +1,117 @@
+[gd_scene load_steps=16 format=3 uid="uid://b02slso5qc7me"]
+
+[ext_resource type="Texture2D" uid="uid://c2a3wtm6drbog" path="res://ParallaxBg/ParallaxBg_1_1.png" id="1_i3iqg"]
+[ext_resource type="Script" uid="uid://b1jfbofbxbq4t" path="res://接金币/主界面.cs" id="1_tb3p8"]
+[ext_resource type="Texture2D" uid="uid://daqsrykm4irl8" path="res://ParallaxBg/ParallaxBg_2_2.png" id="2_56d6u"]
+[ext_resource type="Texture2D" uid="uid://bd5831yt8jge8" path="res://ParallaxBg/ParallaxBg_2_3.png" id="3_tb3p8"]
+[ext_resource type="Texture2D" uid="uid://j1ki2vi1ol8i" path="res://ParallaxBg/ParallaxBg_2_4.png" id="4_aeiuu"]
+[ext_resource type="Texture2D" uid="uid://q78kwliov8oq" path="res://ParallaxBg/ParallaxBg_2_5.png" id="5_8awpr"]
+[ext_resource type="Texture2D" uid="uid://ccgtnlpu44rno" path="res://ParallaxBg/ParallaxBg_2_6.png" id="6_7i7ja"]
+[ext_resource type="PackedScene" uid="uid://cdyyxpearqv5s" path="res://接金币/人物.tscn" id="7_eagjv"]
+[ext_resource type="PackedScene" uid="uid://f4hucmh86ges" path="res://接金币/团子.tscn" id="8_56d6u"]
+[ext_resource type="AudioStream" uid="uid://fgb7mgpk0tav" path="res://音乐/蔚蓝档案（Barrier）.mp3" id="10_aeiuu"]
+[ext_resource type="AudioStream" uid="uid://x57bsh30eua6" path="res://音乐/短音效（获得物品）.mp3" id="11_8awpr"]
+[ext_resource type="PackedScene" uid="uid://m68ud2uq5h7a" path="res://接金币/HungerBar.tscn" id="12_7i7ja"]
+[ext_resource type="PackedScene" uid="uid://c53adjc57oqfm" path="res://接金币/Button.tscn" id="13_eagjv"]
+
+[sub_resource type="FontVariation" id="FontVariation_aeiuu"]
+
+[sub_resource type="CSharpScript" id="CSharpScript_tb3p8"]
+script/source = "using Godot;
+using System;
+
+public partial class Timer : Godot.Timer
+{
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+	{
+	}
+
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
+	{
+	}
+	
+}
+"
+
+[node name="GameCreate" type="Node2D"]
+
+[node name="FoodEat" type="Node2D" parent="." node_paths=PackedStringArray("_timer", "_scoreLabel", "_hungerBar", "_backBGM", "_getMusic")]
+position = Vector2(-9, 22)
+scale = Vector2(1.0000001, 1)
+script = ExtResource("1_tb3p8")
+_FoodScene = ExtResource("8_56d6u")
+_timer = NodePath("Timer")
+_scoreLabel = NodePath("scoreLabel")
+_hungerBar = NodePath("HungerBar")
+_recoverRate = 10.0
+_backBGM = NodePath("BackMusic")
+_getMusic = NodePath("Effects")
+
+[node name="接金币背景" type="Sprite2D" parent="FoodEat"]
+position = Vector2(584.9999, 293)
+scale = Vector2(3.6781254, 3.6888885)
+texture = ExtResource("1_i3iqg")
+
+[node name="ParallaxBg22" type="Sprite2D" parent="FoodEat/接金币背景"]
+position = Vector2(0.6944524, -4.115858)
+scale = Vector2(1.0199654, 0.9939025)
+texture = ExtResource("2_56d6u")
+
+[node name="ParallaxBg23" type="Sprite2D" parent="FoodEat/接金币背景"]
+position = Vector2(3.0555556, 8.506097)
+scale = Vector2(1.0225694, 1)
+texture = ExtResource("3_tb3p8")
+
+[node name="ParallaxBg24" type="Sprite2D" parent="FoodEat/接金币背景"]
+position = Vector2(-1.7285347e-06, 11.524391)
+texture = ExtResource("4_aeiuu")
+
+[node name="ParallaxBg25" type="Sprite2D" parent="FoodEat/接金币背景"]
+position = Vector2(1.5277824, 5.2134056)
+scale = Vector2(1.0338541, 1)
+texture = ExtResource("5_8awpr")
+
+[node name="ParallaxBg26" type="Sprite2D" parent="FoodEat/接金币背景"]
+position = Vector2(0.13889074, 15.640243)
+scale = Vector2(1.0199652, 1)
+texture = ExtResource("6_7i7ja")
+
+[node name="scoreLabel" type="Label" parent="FoodEat"]
+offset_left = 20.0
+offset_right = 134.0
+offset_bottom = 69.0
+theme_override_colors/font_color = Color(0.7978916, 0.9325076, 0.7753069, 1)
+theme_override_colors/font_shadow_color = Color(0.11928228, 0.078127466, 0.10249091, 0)
+theme_override_colors/font_outline_color = Color(0.25685325, 0.3753248, 0.25721744, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = SubResource("FontVariation_aeiuu")
+theme_override_font_sizes/font_size = 50
+text = "00"
+horizontal_alignment = 1
+
+[node name="人物" parent="FoodEat" instance=ExtResource("7_eagjv")]
+position = Vector2(591, 509)
+
+[node name="Timer" type="Timer" parent="FoodEat"]
+autostart = true
+script = SubResource("CSharpScript_tb3p8")
+
+[node name="BackMusic" type="AudioStreamPlayer" parent="FoodEat"]
+stream = ExtResource("10_aeiuu")
+volume_db = -8.0
+autoplay = true
+
+[node name="Effects" type="AudioStreamPlayer2D" parent="FoodEat"]
+stream = ExtResource("11_8awpr")
+volume_db = 8.0
+
+[node name="HungerBar" parent="FoodEat" instance=ExtResource("12_7i7ja")]
+offset_left = 137.99998
+offset_top = 20.0
+offset_right = 438.0
+offset_bottom = 50.0
+
+[node name="Node2D" parent="." instance=ExtResource("13_eagjv")]
+position = Vector2(858, 32)

@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=3 uid="uid://ktjk0ag737gd"]
+
+[ext_resource type="Script" uid="uid://ufq6k0rxeevc" path="res://飞机大战/Pillar.cs" id="1_dkpup"]
+[ext_resource type="Texture2D" uid="uid://cc7o642l67jyk" path="res://柱子/11.png" id="1_kpycl"]
+[ext_resource type="AudioStream" uid="uid://x57bsh30eua6" path="res://音乐/短音效（获得物品）.mp3" id="2_0kmss"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kpycl"]
+radius = 39.0
+height = 99.81299
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0kmss"]
+size = Vector2(70, 402.25)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_kpycl"]
+a = Vector2(80, -200)
+b = Vector2(80, 200)
+
+[node name="Pillar" type="Area2D" node_paths=PackedStringArray("_visible", "_upPillar", "_downPillar", "_barrier", "_scoreSound")]
+position = Vector2(0.758667, -2.9064941)
+script = ExtResource("1_dkpup")
+_visible = NodePath("VisibleOnScreenNotifier2D")
+_upPillar = NodePath("UpPillar")
+_downPillar = NodePath("DownPillar")
+_barrier = NodePath("Barrier")
+_scoreSound = NodePath("ScoreSound")
+
+[node name="11" type="Sprite2D" parent="."]
+modulate = Color(3.3539472, 3.3539472, 3.3539472, 1)
+position = Vector2(0, 100)
+scale = Vector2(0.25, 0.5573883)
+texture = ExtResource("1_kpycl")
+centered = false
+offset = Vector2(-512, -80)
+
+[node name="12" type="Sprite2D" parent="."]
+modulate = Color(3.3539472, 3.3539472, 3.3539472, 1)
+position = Vector2(0, -100)
+rotation = 3.1415927
+scale = Vector2(0.25, 0.5573883)
+texture = ExtResource("1_kpycl")
+centered = false
+offset = Vector2(-512, -80)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(130.241, 0)
+
+[node name="ScoreSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_0kmss")
+volume_db = 10.0
+
+[node name="UpPillar" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UpPillar"]
+position = Vector2(0, 139.906)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_kpycl")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="UpPillar"]
+position = Vector2(0, 380.906)
+shape = SubResource("RectangleShape2D_0kmss")
+
+[node name="DownPillar" type="Area2D" parent="."]
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="DownPillar"]
+position = Vector2(0, -139.094)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_kpycl")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="DownPillar"]
+position = Vector2(0, -379.094)
+shape = SubResource("RectangleShape2D_0kmss")
+
+[node name="Barrier" type="Area2D" parent="."]
+
+[node name="barrier" type="CollisionShape2D" parent="Barrier"]
+shape = SubResource("SegmentShape2D_kpycl")

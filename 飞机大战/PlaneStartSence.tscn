@@ -1,0 +1,142 @@
+[gd_scene load_steps=12 format=3 uid="uid://cbbehe4ish6ex"]
+
+[ext_resource type="Texture2D" uid="uid://bmxsi7cam1xko" path="res://ParallaxBg/ParallaxBg_2_1.png" id="1_0ux2e"]
+[ext_resource type="Script" uid="uid://y5bnpmcnbvpc" path="res://飞机大战/PlaneStartSence.cs" id="1_qt4ll"]
+[ext_resource type="FontFile" uid="uid://cuh4r1inoungp" path="res://字体/像素风.ttf" id="2_rejnm"]
+[ext_resource type="AudioStream" uid="uid://ccxk1cp2k26rs" path="res://音乐/蔚蓝档案（Connected Sky).mp3" id="3_3rv2k"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3rv2k"]
+font = ExtResource("2_rejnm")
+font_size = 82
+font_color = Color(0.0052921446, 0.15995207, 0.46555394, 1)
+shadow_size = 10
+shadow_color = Color(0.30646768, 0.51688623, 0.9999861, 1)
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qt4ll"]
+font = ExtResource("2_rejnm")
+font_size = 48
+font_color = Color(0.91528577, 1, 0.9969166, 0.464)
+shadow_size = 10
+shadow_color = Color(0.025840001, 0.25766784, 1, 0.71800005)
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="Animation" id="Animation_3rv2k"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_rejnm"]
+resource_name = "flash"
+length = 1.2
+loop_mode = 1
+step = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:label_settings:font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.91528577, 1, 0.9969166, 1), Color(0.91528577, 1, 0.9969166, 0.46400002), Color(0.91528577, 1, 0.9969166, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qt4ll"]
+_data = {
+&"RESET": SubResource("Animation_3rv2k"),
+&"flash": SubResource("Animation_rejnm")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_2bqst"]
+font = ExtResource("2_rejnm")
+font_size = 37
+font_color = Color(0.91528577, 1, 0.9969166, 1)
+shadow_size = 10
+shadow_color = Color(0.025840001, 0.25766784, 1, 0.71800005)
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6wa1x"]
+font = ExtResource("2_rejnm")
+font_size = 37
+font_color = Color(0.91528577, 1, 0.9969166, 1)
+shadow_size = 10
+shadow_color = Color(0.025840001, 0.25766784, 1, 0.71800005)
+shadow_offset = Vector2(2, 2)
+
+[node name="PlaneStartSence" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qt4ll")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_0ux2e")
+expand_mode = 1
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -375.49054
+offset_top = 189.27219
+offset_right = 362.50946
+offset_bottom = 289.27252
+grow_horizontal = 2
+text = "高空机动性适配演习"
+label_settings = SubResource("LabelSettings_3rv2k")
+
+[node name="Begin" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -184.0
+offset_top = 52.0
+offset_right = 152.0
+offset_bottom = 111.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "按空格键以开始"
+label_settings = SubResource("LabelSettings_qt4ll")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Begin"]
+libraries = {
+&"": SubResource("AnimationLibrary_qt4ll")
+}
+autoplay = "flash"
+speed_scale = 0.7
+
+[node name="ScoreWord" type="Label" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 190.0
+offset_bottom = 51.0
+text = "最高纪录："
+label_settings = SubResource("LabelSettings_2bqst")
+
+[node name="ScoreNum" type="Label" parent="."]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 5.0
+offset_right = 254.0
+offset_bottom = 51.0
+text = "0000"
+label_settings = SubResource("LabelSettings_6wa1x")
+
+[node name="BackMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_3rv2k")
+autoplay = true

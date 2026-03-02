@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://m68ud2uq5h7a"]
+
+[ext_resource type="Script" uid="uid://rkh0r7024mkn" path="res://接金币/HungerBar.cs" id="1_x0g4a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x0g4a"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="HungerBar" type="Control" node_paths=PackedStringArray("_progressBar", "_timer")]
+modulate = Color(0.94715697, 0.9149273, 0.919017, 1)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 300.0
+offset_bottom = 30.0
+size_flags_vertical = 8
+script = ExtResource("1_x0g4a")
+_progressBar = NodePath("ProgressBar")
+_timer = NodePath("Timer")
+_hungerRate = 0.5
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(300, 30)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 4.0
+grow_horizontal = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_x0g4a")
+value = 20.0
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ccxk1cp2k26rs"
+path="res://.godot/imported/蔚蓝档案（Connected Sky).mp3-2c7eda270ac396724530f3e4f0301c36.mp3str"
+
+[deps]
+
+source_file="res://音乐/蔚蓝档案（Connected Sky).mp3"
+dest_files=["res://.godot/imported/蔚蓝档案（Connected Sky).mp3-2c7eda270ac396724530f3e4f0301c36.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,8 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://bgdw6d34b2ed5"]
+
+[ext_resource type="Texture2D" uid="uid://cmgyc3w6oc63w" path="res://按钮/Contoured Button.png" id="1_4e1iu"]
+
+[resource]
+atlas = ExtResource("1_4e1iu")
+region = Rect2(124, 23, 21, 23)
+filter_clip = true

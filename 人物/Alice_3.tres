@@ -1,0 +1,8 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://b6ne404siwppq"]
+
+[ext_resource type="Texture2D" uid="uid://c8rc5sj2r7di6" path="res://人物/爱丽丝飞行.png" id="1_y5hwx"]
+
+[resource]
+atlas = ExtResource("1_y5hwx")
+region = Rect2(75, 592, 393, 334)
+filter_clip = true

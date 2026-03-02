@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://c53adjc57oqfm"]
+
+[ext_resource type="Script" uid="uid://dx5uu5826gnir" path="res://接金币/Button.cs" id="1_ivf86"]
+[ext_resource type="Texture2D" uid="uid://bh3r7kgnbtkbf" path="res://按钮/restart_off.tres" id="1_xv735"]
+[ext_resource type="Texture2D" uid="uid://cvjvo53acwt3m" path="res://按钮/restart_on.tres" id="2_2c4q6"]
+[ext_resource type="Texture2D" uid="uid://c8nfnh2iccdjm" path="res://按钮/Home_off.tres" id="3_e6g05"]
+[ext_resource type="Texture2D" uid="uid://dutje7xamlay5" path="res://按钮/Home_on.tres" id="4_ivf86"]
+[ext_resource type="Texture2D" uid="uid://bgdw6d34b2ed5" path="res://按钮/suspend_off.tres" id="5_e6g05"]
+[ext_resource type="Texture2D" uid="uid://cvqj5ps56gp8i" path="res://按钮/suspend_on.tres" id="6_ivf86"]
+
+[node name="Button" type="Node2D"]
+script = ExtResource("1_ivf86")
+
+[node name="Restart" type="TextureButton" parent="."]
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
+texture_filter = 1
+offset_right = 56.0
+offset_bottom = 64.0
+texture_normal = ExtResource("1_xv735")
+texture_pressed = ExtResource("2_2c4q6")
+texture_hover = ExtResource("1_xv735")
+stretch_mode = 5
+
+[node name="Suspend" type="TextureButton" parent="."]
+modulate = Color(1.1879086, 1.353256, 1.30517, 1)
+texture_filter = 1
+offset_left = 96.0
+offset_right = 152.0
+offset_bottom = 64.0
+texture_normal = ExtResource("5_e6g05")
+texture_pressed = ExtResource("6_ivf86")
+texture_hover = ExtResource("5_e6g05")
+stretch_mode = 5
+
+[node name="Home" type="TextureButton" parent="."]
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
+texture_filter = 1
+offset_left = 192.0
+offset_right = 248.0
+offset_bottom = 64.0
+texture_normal = ExtResource("3_e6g05")
+texture_pressed = ExtResource("4_ivf86")
+texture_hover = ExtResource("3_e6g05")
+stretch_mode = 5

@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://bj1bo3g2md443"]
+
+[ext_resource type="Texture2D" uid="uid://bmxsi7cam1xko" path="res://ParallaxBg/ParallaxBg_2_1.png" id="1_ghe34"]
+[ext_resource type="Script" uid="uid://6ld6du1v40np" path="res://飞机大战/飞机大战.cs" id="1_mvibb"]
+[ext_resource type="Texture2D" uid="uid://daqsrykm4irl8" path="res://ParallaxBg/ParallaxBg_2_2.png" id="2_5sx04"]
+[ext_resource type="PackedScene" uid="uid://dradav4krdv5r" path="res://飞机大战/AliceFly.tscn" id="3_5sx04"]
+[ext_resource type="PackedScene" uid="uid://djok4jeowvqpq" path="res://飞机大战/Floor.tscn" id="4_82cw8"]
+[ext_resource type="PackedScene" uid="uid://ktjk0ag737gd" path="res://飞机大战/Pillar.tscn" id="5_tte7m"]
+[ext_resource type="AudioStream" uid="uid://fgb7mgpk0tav" path="res://音乐/蔚蓝档案（Barrier）.mp3" id="7_uhtje"]
+
+[node name="飞机大战" type="Node2D" node_paths=PackedStringArray("_spawnTimer", "_spwanTop", "_spwanFloor", "_pillerHolder", "_aliceFly", "_backMusic")]
+script = ExtResource("1_mvibb")
+_pillarScene = ExtResource("5_tte7m")
+_spawnTimer = NodePath("Timer")
+_spwanTop = NodePath("SpawnTop")
+_spwanFloor = NodePath("SpawnFloor")
+_pillerHolder = NodePath("PillatHolder")
+_aliceFly = NodePath("AliceFly")
+_backMusic = NodePath("BackMusic")
+
+[node name="BackGround" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="BackGround"]
+texture_filter = 1
+position = Vector2(575.5, 327.25)
+scale = Vector2(3.646875, 3.686111)
+texture = ExtResource("1_ghe34")
+
+[node name="ParallaxBg22" type="Sprite2D" parent="BackGround"]
+texture_filter = 1
+position = Vector2(557, 608.00006)
+scale = Vector2(4, 3.913)
+texture = ExtResource("2_5sx04")
+
+[node name="AliceFly" parent="." instance=ExtResource("3_5sx04")]
+position = Vector2(159, 354)
+
+[node name="floor" parent="." instance=ExtResource("4_82cw8")]
+
+[node name="floorDown" parent="." instance=ExtResource("4_82cw8")]
+position = Vector2(-4, 659)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="SpawnTop" type="Marker2D" parent="."]
+position = Vector2(1250, 200)
+
+[node name="SpawnFloor" type="Marker2D" parent="."]
+position = Vector2(1250, 500)
+
+[node name="PillatHolder" type="Node2D" parent="."]
+
+[node name="BackMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_uhtje")
+autoplay = true
